@@ -15,4 +15,28 @@ class App < Sinatra::Base
 
   # Code your final two routes here:
 
+  get '/goodbye/:name' do
+    @user_name = params[:name]
+    "Goodbye, #{@user_name}."
+  end
+  
+  get '/:operation/:number1/:number2' do
+    number1 = params[:number1].to_i
+    number2 = params[:number2].to_i
+  
+    answer = 'Unable to perform this operation'
+  
+   case params[:operation]
+    when 'add'
+      answer = (number1 + number2).to_s
+    when 'subtract'
+      answer = (number1 - number2).to_s
+    when 'multiply'
+      answer = (number1 * number2).to_s
+    when 'divide'
+      answer = (number1 / number2).to_s
+    end
+    
+  end
+
 end
